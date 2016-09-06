@@ -1,12 +1,17 @@
 <h1>Hello!</h1>
-<div>
+<div *ngIf="selectedDuck">
     <div>
         <label>id:</label>
-        {{ duck.id }}
+        {{ selectedDuck.id }}
     </div>
     <div>
         <label>color:</label>
-        <input [(ngModel)]="duck.color" placeholder="Color">
+        <input [(ngModel)]="selectedDuck.color" placeholder="Color">
     </div>
 </div>
-{{ duck.color }}
+
+<ul>
+    <li *ngFor="let duck of ducks" (click)="onSelect(duck)">
+        {{ duck.color }}
+    </li>
+</ul>
