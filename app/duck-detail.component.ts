@@ -26,6 +26,11 @@ export class DuckDetailComponent implements OnInit {
         window.history.back();
     }
 
+    save(): void {
+        this.duckService.update(this.duck)
+            .then(this.goBack);
+    }
+
     @Input()
     duck: Duck;
 }
