@@ -18,12 +18,28 @@ export class DuckService {
         return Promise.reject(error.message || error);
     }
 
+    create(color: string): Promise<Duck> {
+        return this.http.post(this.ducksUrl, JSON.stringify({color: color}), {headers: this.headers})
+                   .toPromise()
+                   .then((res) => res.json().data)
+                   .catch(this.handleError);
+    }
+
     update(duck: Duck): Promise<Duck> {
         const url = `${this.ducksUrl}/${duck.id}`;
 
         return this.http.put(url, JSON.stringify(duck), {headers: this.headers})
                    .toPromise()
                    .then(() => duck)
+                   .catch(this.handleError);
+    }
+
+    delete(id: number): Promise<void> {
+        let url = `${this.ducksUrl}/${id}`;
+
+        return this.http.delete(url, {headers: this.headers})
+                   .toPromise()
+                   .then(() => null)
                    .catch(this.handleError);
     }
 

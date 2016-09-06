@@ -3,8 +3,14 @@
 <ul>
     <li *ngFor="let duck of ducks" (click)="onSelect(duck)">
         {{ duck.color }}
+        <button (click)="delete(duck); $event.stopPropagation()">Delete</button>
     </li>
 </ul>
+<div>
+    <label>Duck color:</label>
+    <input #duckColor>
+    <button (click)="add(duckColor.value); duckColor.value = ''">Add</button>
+</div>
 <div *ngIf="selectedDuck">
     {{ selectedDuck.color }}
     <button (click)="gotoDetail(selectedDuck)">Edit</button>
