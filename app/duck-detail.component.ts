@@ -1,4 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
+
+import { DuckService } from "./duck.service";
 
 import { Duck } from "./models";
 
@@ -6,7 +9,23 @@ import { Duck } from "./models";
     selector: "duck-detail",
     templateUrl: "/app/duck-detail.component.html"
 })
-export class DuckDetailComponent {
+export class DuckDetailComponent implements OnInit {
+    constructor(private duckService: DuckService,
+                private route: ActivatedRoute)
+    {}
+
+    ngOnInit(): void {
+        this.route.params.forEach((params: Params) => {
+            let id = +params['id'];
+            this.duckService.getDuck(id)
+                .then(duck => this.duck = duck);
+        });
+    }
+
+    goBack(): void {
+        window.history.back();
+    }
+
     @Input()
     duck: Duck;
 }

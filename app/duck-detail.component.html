@@ -1,10 +1,11 @@
 <div *ngIf="duck">
     <div>
-        <label>id:</label>
+        <label>id: </label>
         {{ duck.id }}
     </div>
     <div>
-        <label>color:</label>
-        <input [(ngModel)]="duck.color" placeholder="Color">
+        <label>color: </label>
+        <input [(ngModel)]="duck.color" placeholder="Color" />
     </div>
+    <button (click)="goBack()">Back</button>
 </div>

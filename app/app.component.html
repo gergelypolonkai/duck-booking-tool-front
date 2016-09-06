@@ -1,8 +1,3 @@
-<h1>Hello!</h1>
-<duck-detail [duck]="selectedDuck"></duck-detail>
-
-<ul>
-    <li *ngFor="let duck of ducks" (click)="onSelect(duck)">
-        {{ duck.color }}
-    </li>
-</ul>
+<a routerLink="/dashboard">Dashboard</a>
+<a routerLink="/ducks">Ducks</a>
+<router-outlet></router-outlet>

@@ -1,0 +1,11 @@
+<h1>Hello!</h1>
+
+<ul>
+    <li *ngFor="let duck of ducks" (click)="onSelect(duck)">
+        {{ duck.color }}
+    </li>
+</ul>
+<div *ngIf="selectedDuck">
+    {{ selectedDuck.color }}
+    <button (click)="gotoDetail(selectedDuck)">Edit</button>
+</div>

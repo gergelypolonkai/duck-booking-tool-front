@@ -8,4 +8,8 @@ export class DuckService {
     getDucks(): Promise<Duck[]> {
         return Promise.resolve(DUCKS);
     }
+
+    getDuck(id: number): Promise<Duck> {
+        return this.getDucks().then(ducks => ducks.find(duck => duck.id === id));
+    }
 }
