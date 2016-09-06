@@ -1,0 +1,10 @@
+<div *ngIf="duck">
+    <div>
+        <label>id:</label>
+        {{ duck.id }}
+    </div>
+    <div>
+        <label>color:</label>
+        <input [(ngModel)]="duck.color" placeholder="Color">
+    </div>
+</div>
