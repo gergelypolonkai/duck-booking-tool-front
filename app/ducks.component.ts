@@ -1,18 +1,21 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { Duck } from "./models";
 import { DuckService } from "./duck.service";
 
 @Component({
-    selector: "duckbook-front",
-    templateUrl: "/app/app.component.html",
+    selector: "ducks",
+    templateUrl: "/app/ducks.component.html",
     providers: [ DuckService ]
 })
-export class AppComponent implements OnInit {
+export class DucksComponent implements OnInit {
     ducks = [];
     selectedDuck: Duck;
 
-    constructor(private duckService: DuckService) {}
+    constructor(private router: Router,
+                private duckService: DuckService)
+    {}
 
     ngOnInit(): void {
         this.getDucks();
@@ -23,12 +26,10 @@ export class AppComponent implements OnInit {
     }
 
     onSelect(duck: Duck): void {
-        console.log(duck);
         this.selectedDuck = duck;
     }
 
-    duck: Duck = {
-        id: 1,
-        color: 'yellow'
-    };
+    gotoDetail(duck: Duck): void {
+        this.router.navigate(['/detail', duck.id]);
+    }
 }
