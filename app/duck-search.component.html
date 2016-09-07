@@ -1,0 +1,11 @@
+<div id="search-component">
+    <h4>Duck search</h4>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)">
+    <div>
+        <div *ngFor="let duck of ducks | async"
+             (click)="gotoDetail(duck)"
+             class="search-result">
+            {{ duck.color }}
+        </div>
+    </div>
+</div>
