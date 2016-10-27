@@ -1,17 +1,6 @@
-<h1>Hello!</h1>
-
 <ul>
-    <li *ngFor="let duck of ducks" (click)="onSelect(duck)">
-        {{ duck.color }}
-        <button (click)="delete(duck); $event.stopPropagation()">Delete</button>
+    <li *ngFor="let duck of ducks">
+        <span class="badge">{{ duck.id }}</span>
+        {{ duck.name }}
     </li>
 </ul>
-<div>
-    <label>Duck color:</label>
-    <input #duckColor>
-    <button (click)="add(duckColor.value); duckColor.value = ''">Add</button>
-</div>
-<div *ngIf="selectedDuck">
-    {{ selectedDuck.color }}
-    <button (click)="gotoDetail(selectedDuck)">Edit</button>
-</div>

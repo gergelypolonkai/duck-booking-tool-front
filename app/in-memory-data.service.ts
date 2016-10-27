@@ -1,11 +1,18 @@
-import { InMemoryDbService } from "angular2-in-memory-web-api";
+import { InMemoryDbService } from "angular-in-memory-web-api";
 
 export class InMemoryDataService implements InMemoryDbService {
     createDb() {
         let ducks = [
-            { id: 1, color: 'yellow' },
-            { id: 2, color: 'blue' },
-            { id: 3, color: 'pink' }
+            {
+                id: 1,
+                name: "Fastfingers",
+                color: "#ee6aa7"
+            },
+            {
+                id: 2,
+                name: "Lady Pickett",
+                color: "#8b8b00"
+            }
         ];
 
         return {ducks};

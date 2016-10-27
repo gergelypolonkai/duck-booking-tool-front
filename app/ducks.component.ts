@@ -5,54 +5,42 @@ import { Duck } from "./models";
 import { DuckService } from "./duck.service";
 
 @Component({
+    moduleId: module.id,
     selector: "ducks",
-    templateUrl: "/app/ducks.component.html",
-    providers: [ DuckService ]
+    templateUrl: "ducks.component.html"
 })
-export class DucksComponent implements OnInit {
-    ducks = [];
+export class DucksComponent {
+    ducks: Duck[];
     selectedDuck: Duck;
 
-    constructor(private router: Router,
-                private duckService: DuckService)
+    constructor(private duckService: DuckService,
+                private router: Router)
     {}
 
-    ngOnInit(): void {
-        this.getDucks();
+    getDucks(): void
+    {
+        this.duckService
+            .getDucks()
+            .then(ducks => this.ducks = ducks);
     }
 
-    getDucks(): void {
-        this.duckService.getDucks().then(ducks => this.ducks = ducks);
-    }
+    add(name: string): void {
+        name = name.trim();
 
-    onSelect(duck: Duck): void {
-        this.selectedDuck = duck;
-    }
+        if (!name) { return; }
 
-    gotoDetail(duck: Duck): void {
-        this.router.navigate(['/detail', duck.id]);
-    }
-
-    add(color: string): void {
-        // Make sure the color is not empty
-        color = color.trim();
-        if (!color) { return; }
-
-        this.duckService.create(color)
+        this.duckService.create(name)
             .then(duck => {
                 this.ducks.push(duck);
                 this.selectedDuck = null;
             });
     }
 
-    delete(duck: Duck): void {
-        this.duckService.delete(duck.id)
-            .then(() => {
-                this.ducks = this.ducks.filter(d => d !== duck);
+    ngOnInit(): void {
+        this.getDucks();
+    }
 
-                if (this.selectedDuck === duck) {
-                    this.selectedDuck = null;
-                }
-            });
+    onSelect(duck: Duck): void {
+        this.selectedDuck = duck;
     }
 }

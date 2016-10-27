@@ -1,4 +1,10 @@
-<div *ngFor="let duck of ducks" (click)="gotoDetail(duck)">
-    {{ duck.color }}
+<h3>Duck Dashboard!</h3>
+<div class="list-group">
+    <a *ngFor="let duck of ducks"
+       class="list-group-item duck-link"
+       href="#">
+        <div class="image pull-left"></div>
+        {{ duck.name }}
+        <p class="clearfix small">Something.</p>
+    </a>
 </div>
-<duck-search></duck-search>
