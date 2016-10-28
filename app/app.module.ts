@@ -12,6 +12,7 @@ import { AppComponent } from "./app.component";
 import { DuckDetailComponent } from "./duck-detail.component";
 import { DashboardComponent } from "./dashboard.component";
 import { DucksComponent } from "./ducks.component";
+import { HeaderComponent } from "./header.component";
 
 import { DuckService } from "./duck.service";
 import { UserService } from "./user.service";
@@ -27,7 +28,8 @@ import { UserService } from "./user.service";
         AppComponent,
         DashboardComponent,
         DuckDetailComponent,
-        DucksComponent
+        DucksComponent,
+        HeaderComponent
     ],
     providers: [
         DuckService,
