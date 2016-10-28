@@ -6,7 +6,7 @@ import { HttpModule } from "@angular/http";
 import { AppRoutingModule } from "./app-routing.module";
 
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDataService } from "./in-memory-data.service";
+import { InMemoryDuckService } from "./in-memory-data.service";
 
 import { AppComponent } from "./app.component";
 import { DuckDetailComponent } from "./duck-detail.component";
@@ -14,12 +14,13 @@ import { DashboardComponent } from "./dashboard.component";
 import { DucksComponent } from "./ducks.component";
 
 import { DuckService } from "./duck.service";
+import { UserService } from "./user.service";
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService),
+        InMemoryWebApiModule.forRoot(InMemoryDuckService),
         AppRoutingModule
     ],
     declarations: [
@@ -28,7 +29,10 @@ import { DuckService } from "./duck.service";
         DuckDetailComponent,
         DucksComponent
     ],
-    providers: [ DuckService ],
+    providers: [
+        DuckService,
+        UserService
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule {}
