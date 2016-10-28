@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 
 import { DuckService } from "./duck.service";
 
+import { Duck } from "./models";
+
 @Component({
     selector: "dashboard",
     templateUrl :"app/dashboard.component.html",
